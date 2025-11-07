@@ -1,44 +1,35 @@
-#include <locale.h>
-#include <math.h>
 #include <stdio.h>
 
 int main(void)
 {
-    setlocale(LC_ALL, "");
+    int day, month, count;
 
-    int num0, num1;
-    char action;
-    scanf("%d %c %d", &num0, &action, &num1);
-
-    if (num1 == 0 && (action == '/' || action == ':'))
+    scanf("%d%d", &month, &day);
+    for (int i = 1; i < month; i++)
     {
-        printf("ERROR!\n");
-        return 0;
+        switch (i)
+        {
+        case 1:
+        case 3:
+        case 5:
+        case 7:
+        case 8:
+        case 10:
+            count = 31;
+            break;
+        case 2:
+            count = 28;
+            break;
+        case 4:
+        case 6:
+        case 9:
+        case 11:
+            count = 30;
+            break;
+        }
+        day += count;
     }
-
-    switch (action)
-    {
-    case '+':
-        printf("%.2f\n", (double)num0 + num1);
-        break;
-    case '-':
-        printf("%.2f\n", (double)num0 - num1);
-        break;
-    case 'x':
-    case '*':
-        printf("%.2f\n", (double)num0 * num1);
-        break;
-    case ':':
-    case '/':
-        printf("%.2f\n", (double)num0 / num1);
-        break;
-    case '^':
-        printf("%.2f\n", (double)pow(num0, num1));
-        break;
-    default:
-        printf("ERROR!\n");
-        break;
-    }
+    printf("%d\n", day);
 
     return 0;
 }
