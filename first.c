@@ -2,34 +2,34 @@
 
 int main(void)
 {
-    int day, month, count;
+    int num, k, first, second, third, fourth, result;
 
-    scanf("%d%d", &month, &day);
-    for (int i = 1; i < month; i++)
+    scanf("%d%d", &k, &num);
+    switch (k)
     {
-        switch (i)
-        {
-        case 1:
-        case 3:
-        case 5:
-        case 7:
-        case 8:
-        case 10:
-            count = 31;
-            break;
-        case 2:
-            count = 28;
-            break;
-        case 4:
-        case 6:
-        case 9:
-        case 11:
-            count = 30;
-            break;
-        }
-        day += count;
+    case 1:
+        result = num;
+        break;
+    case 2:
+        first = num / 10;
+        second = num % 10;
+        result = first * second;
+        break;
+    case 3:
+        first = num / 100;
+        second = (num % 100) / 10;
+        third = (num % 10) % 10;
+        result = first * second * third;
+        break;
+    case 4:
+        first = num / 1000;
+        second = (num % 1000) / 100;
+        third = (num % 100) / 10;
+        fourth = num % 10;
+        result = first * second * third * fourth;
+        break;
     }
-    printf("%d\n", day);
+    printf("%d\n", result);
 
     return 0;
 }
