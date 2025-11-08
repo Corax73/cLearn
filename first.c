@@ -1,27 +1,52 @@
 #include <stdio.h>
-#include <string.h>
 
 int main(void)
 {
-    int num;
-    char res[] = " лет", str0[] = " год", str1[] = " года", strStart[] = "Мне ";
+    const char err[] = "Invalid format";
 
-    scanf("%d", &num);
-    if (!(num % 100 >= 11 && num % 100 <= 19))
+    int res = 0;
+    char char0, char1, char2;
+
+    scanf("%c%c%c", &char0, &char1, &char2);
+    switch ((int)char0)
     {
-        switch (num % 10)
-        {
-        case 1:
-            strcpy(res, str0);
-            break;
-        case 2:
-        case 3:
-        case 4:
-            strcpy(res, str1);
-            break;
-        }
+    case 114:
+        res += 4;
+        break;
+    case 45:
+        break;
+    default:
+        printf("%s\n", err);
+        return 0;
+        break;
     }
-    printf("%s%d%s\n", strStart, num, res);
+
+    switch ((int)char1)
+    {
+    case 119:
+        res += 2;
+        break;
+    case 45:
+        break;
+    default:
+        printf("%s\n", err);
+        return 0;
+        break;
+    }
+
+    switch ((int)char2)
+    {
+    case 120:
+        res += 1;
+        break;
+    case 45:
+        break;
+    default:
+        printf("%s\n", err);
+        return 0;
+        break;
+    }
+    printf("%d\n", res);
 
     return 0;
 }
