@@ -1,21 +1,24 @@
 #include <stdio.h>
+#include <math.h>
 
 int main(void)
 {
-    int num0 = 0, num1 = 0, num2 = 0, num3 = 0;
+    int num0, num1, num2, num3, distance1, distance2;
 
     scanf("%d%d%d%d", &num0, &num1, &num2, &num3);
-
-    if (num3 > 0)
+    distance1 = sqrt(pow(num0, 2) + pow(num1, 2));
+    distance2 = sqrt(pow(num2, 2) + pow(num3, 2));
+    if (distance1 < distance2)
     {
-        printf("%d %d %d\n", 1, 1, 1);
-        return 0;
+        printf("1\n");
     }
-    if (num3 < 0)
+    else if (distance2 < distance1)
     {
-        printf("%d %d %d\n", 0, 0, 0);
-        return 0;
+        printf("2\n");
     }
-    printf("%d %d %d\n", num0, num1, num2);
+    else
+    {
+        printf("0\n");
+    }
     return 0;
 }
