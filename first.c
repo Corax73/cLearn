@@ -1,24 +1,46 @@
 #include <stdio.h>
-#include <math.h>
 
 int main(void)
 {
-    int num0, num1, num2, num3, distance1, distance2;
+    int countValuesd;
+    double x, y;
 
-    scanf("%d%d%d%d", &num0, &num1, &num2, &num3);
-    distance1 = sqrt(pow(num0, 2) + pow(num1, 2));
-    distance2 = sqrt(pow(num2, 2) + pow(num3, 2));
-    if (distance1 < distance2)
+    countValuesd = scanf("%lf%lf", &x, &y);
+    ;
+
+    if (countValuesd != 2)
     {
-        printf("1\n");
+        printf("Incorrect input\n");
+        return 0;
     }
-    else if (distance2 < distance1)
+    if (x == 0 || y == 0)
     {
-        printf("2\n");
+        printf("Incorrect input\n");
+        return 0;
+    }
+
+    if (x > 0)
+    {
+        if (y > 0)
+        {
+            printf("%d\n", 1);
+        }
+        else
+        {
+            printf("%d\n", 4);
+        }
     }
     else
     {
-        printf("0\n");
+        if (y > 0)
+        {
+            printf("%d\n", 2);
+        }
+        else
+        {
+            printf("%d\n", 3);
+        }
     }
+
     return 0;
 }
