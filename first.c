@@ -2,44 +2,36 @@
 
 int main(void)
 {
-    int countValuesd;
-    double x, y;
+    int day, month, count;
 
-    countValuesd = scanf("%lf%lf", &x, &y);
-    ;
-
-    if (countValuesd != 2)
+    scanf("%d%d", &day, &month);
+    switch (month)
     {
-        printf("Incorrect input\n");
-        return 0;
+    case 1:
+    case 3:
+    case 5:
+    case 7:
+    case 8:
+    case 10:
+        count = 31;
+        break;
+    case 2:
+        count = 28;
+        break;
+    case 4:
+    case 6:
+    case 9:
+    case 11:
+        count = 30;
+        break;
     }
-    if (x == 0 || y == 0)
+    if (day <= count)
     {
-        printf("Incorrect input\n");
-        return 0;
-    }
-
-    if (x > 0)
-    {
-        if (y > 0)
-        {
-            printf("%d\n", 1);
-        }
-        else
-        {
-            printf("%d\n", 4);
-        }
+        printf("correct\n");
     }
     else
     {
-        if (y > 0)
-        {
-            printf("%d\n", 2);
-        }
-        else
-        {
-            printf("%d\n", 3);
-        }
+        printf("error\n");
     }
 
     return 0;
