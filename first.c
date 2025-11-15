@@ -2,36 +2,17 @@
 
 int main(void)
 {
-    int day, month, count;
+    int base_damage, armor_class, is_critical;
+    double defender_health, res;
 
-    scanf("%d%d", &day, &month);
-    switch (month)
+    scanf("%d%lf%d%d", &base_damage, &defender_health, &armor_class, &is_critical);
+
+    res = base_damage * (is_critical ? 2 : 1);
+    res = res - (armor_class > 0 ? res * armor_class / 10 : 0);
+    printf("%.2f\n", res);
+    if (res > defender_health)
     {
-    case 1:
-    case 3:
-    case 5:
-    case 7:
-    case 8:
-    case 10:
-        count = 31;
-        break;
-    case 2:
-        count = 28;
-        break;
-    case 4:
-    case 6:
-    case 9:
-    case 11:
-        count = 30;
-        break;
-    }
-    if (day <= count)
-    {
-        printf("correct\n");
-    }
-    else
-    {
-        printf("error\n");
+        printf("You win!\n");
     }
 
     return 0;
