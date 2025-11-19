@@ -2,22 +2,16 @@
 
 int main(void)
 {
-    int num0, num1 = 0, num2 = 1, res= num1 + num2;
+    int num0 = 0, count = 0;
 
     scanf("%d", &num0);
-    if (num0 <= 2)
+    for (int i = 1; i <= num0; i++)
     {
-        res = 1;
-    }
-    else
-    {
-        for (int i = 2; i < num0; i++)
+        if (num0 % i == 0)
         {
-            num1 = num2;
-            num2 = res;
-            res = num2 + num1;
+            count++;
         }
     }
-    printf("%d\n", res);
+    printf("%d\n", count > 2 ? 0 : 1);
     return 0;
 }
