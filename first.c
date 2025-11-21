@@ -2,16 +2,23 @@
 
 int main(void)
 {
-    int num0 = 0, count = 0;
+    int num0 = 0, max = 0, min = 0;
 
     scanf("%d", &num0);
-    for (int i = 1; i <= num0; i++)
+    min = num0;
+    max = num0;
+    while (num0 != 0)
     {
-        if (num0 % i == 0)
+        if (max < num0)
         {
-            count++;
+            max = num0;
         }
+        if (min > num0)
+        {
+            min = num0;
+        }
+        scanf("%d", &num0);
     }
-    printf("%d\n", count > 2 ? 0 : 1);
+    printf("%d %d", max, min);
     return 0;
 }
