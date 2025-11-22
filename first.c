@@ -1,24 +1,30 @@
 #include <stdio.h>
+#include <math.h>
 
 int main(void)
 {
-    int num0 = 0, max = 0, min = 0;
+    long num0 = 0, num1 = 0;
+    int num2 = 1, num3 = 2;
 
-    scanf("%d", &num0);
-    min = num0;
-    max = num0;
-    while (num0 != 0)
+    scanf("%ld", &num0);
+    num1 = pow(num3, num2);
+    if (num1 > num0)
     {
-        if (max < num0)
-        {
-            max = num0;
-        }
-        if (min > num0)
-        {
-            min = num0;
-        }
-        scanf("%d", &num0);
+        return 0;
     }
-    printf("%d %d", max, min);
+    while (num1 <= num0)
+    {
+        num1 = pow(num3, num2);
+        if (num1 >= num0)
+        {
+            if (num1 == num0)
+            {
+                printf("%d ", num2);
+            }
+            break;
+        }
+        printf("%d ", num2);
+        num2++;
+    }
     return 0;
 }
