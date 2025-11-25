@@ -2,24 +2,16 @@
 
 int main(void)
 {
-    long num0 = 0;
-    int num1 = 0, num2 = 10;
+    double num0 = 0.0, fact = 1.0, i = 1.0, exp = 1.0;
 
-    scanf("%ld", &num0);
-    num1 = num0 % num2;
+    scanf("%lf", &num0);
 
-    if (num1 == num0)
+    do
     {
-        printf("%ld\n", num0);
-        return 0;
-    }
-    printf("%d", num1);
-    num2 *= 10;
-    while (num1 != num0)
-    {
-        num1 = num0 % num2;
-        printf("%d", num1 / (num2 > 10 ? (num2 / 10) : num2));
-        num2 *= 10;
-    }
+        fact = fact * i;
+        exp = exp + 1.0 / fact;
+        i++;
+    } while (1.0 / fact > num0);
+    printf("%1.8lf", exp);
     return 0;
 }
