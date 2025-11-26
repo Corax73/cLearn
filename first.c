@@ -2,16 +2,26 @@
 
 int main(void)
 {
-    double num0 = 0.0, fact = 1.0, i = 1.0, exp = 1.0;
+    long long num0 = 0, num1 = 0, num2 = 0, greatestCommonDivisor = 0;
 
-    scanf("%lf", &num0);
-
-    do
+    scanf("%lld %lld", &num0, &num1);
+    if (num1 > num0)
     {
-        fact = fact * i;
-        exp = exp + 1.0 / fact;
-        i++;
-    } while (1.0 / fact > num0);
-    printf("%1.8lf", exp);
+        num2 = num0;
+        num0 = num1;
+        num1 = num2;
+    }
+    num2 = num0;
+    while (1)
+    {
+        if (num2 % num0 == 0 && num2 % num1 == 0)
+        {
+            greatestCommonDivisor = num2;
+            break;
+        }
+        num2++;
+    }
+    printf("%lld\n", greatestCommonDivisor);
+
     return 0;
 }
