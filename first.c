@@ -2,26 +2,28 @@
 
 int main(void)
 {
-    long long num0 = 0, num1 = 0, num2 = 0, greatestCommonDivisor = 0;
+    long long num0 = 0, num1 = 0, num2 = 0, i = 0;
 
-    scanf("%lld %lld", &num0, &num1);
-    if (num1 > num0)
+    scanf("%lld", &num0);
+    scanf("%lld", &num1);
+    num2 = num1;
+    printf("%lld ", num2);
+    for (i = 1; i < num0; i++)
     {
-        num2 = num0;
-        num0 = num1;
-        num1 = num2;
-    }
-    num2 = num0;
-    while (1)
-    {
-        if (num2 % num0 == 0 && num2 % num1 == 0)
+        scanf("%lld", &num1);
+        if (num2 != num1)
         {
-            greatestCommonDivisor = num2;
-            break;
+            num2 = num1;
+            if (i == num0 - 1)
+            {
+                printf("%lld", num2);
+            }
+            else
+            {
+                printf("%lld ", num2);
+            }
         }
-        num2++;
     }
-    printf("%lld\n", greatestCommonDivisor);
 
     return 0;
 }
