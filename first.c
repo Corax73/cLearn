@@ -2,28 +2,32 @@
 
 int main(void)
 {
-    long long num0 = 0, num1 = 0, num2 = 0, i = 0;
+    int num0 = 3, num1 = 5, i = 0, check = 0;
+    const char fizz[] = "Fizz", buzz[] = "Buzz";
 
-    scanf("%lld", &num0);
-    scanf("%lld", &num1);
-    num2 = num1;
-    printf("%lld ", num2);
-    for (i = 1; i < num0; i++)
+    for (i = 1; i <= 100; i++)
     {
-        scanf("%lld", &num1);
-        if (num2 != num1)
+        check = 0;
+        if (i % num0 == 0)
         {
-            num2 = num1;
-            if (i == num0 - 1)
-            {
-                printf("%lld", num2);
-            }
-            else
-            {
-                printf("%lld ", num2);
-            }
+            printf("%s", fizz);
+            check = 1;
+        }
+        if (i % num1 == 0)
+        {
+            printf("%s", buzz);
+            check = 1;
+        }
+        if (!check)
+        {
+            printf("%d ", i);
+        }
+        else
+        {
+            printf(" ");
         }
     }
+    printf("\n ");
 
     return 0;
 }
