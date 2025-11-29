@@ -2,32 +2,33 @@
 
 int main(void)
 {
-    int num0 = 3, num1 = 5, i = 0, check = 0;
-    const char fizz[] = "Fizz", buzz[] = "Buzz";
+    int num0 = 0, check = 1;
+    scanf("%d", &num0);
 
-    for (i = 1; i <= 100; i++)
+    int arr[num0];
+
+    for (int i = 0; i < num0; i++)
     {
-        check = 0;
-        if (i % num0 == 0)
+        scanf("%d", &arr[i]);
+    }
+
+    for (int i = 0; i < num0; i++)
+    {
+        if (arr[i] % 2 == 0)
         {
-            printf("%s", fizz);
-            check = 1;
-        }
-        if (i % num1 == 0)
-        {
-            printf("%s", buzz);
-            check = 1;
-        }
-        if (!check)
-        {
-            printf("%d ", i);
-        }
-        else
-        {
-            printf(" ");
+            printf("%d ", arr[i]);
         }
     }
-    printf("\n ");
-
+    for (int i = 0; i < num0; i++)
+    {
+        if (arr[i] % 2)
+        {
+            printf("%d", arr[i]);
+            if (i < num0 - 1)
+            {
+                printf(" ");
+            }
+        }
+    }
     return 0;
 }
