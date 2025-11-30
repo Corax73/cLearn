@@ -2,7 +2,8 @@
 
 int main(void)
 {
-    int num0 = 0, check = 1;
+    int num0 = 0;
+    double summ = 0, aMean = 0;
     scanf("%d", &num0);
 
     int arr[num0];
@@ -14,21 +15,27 @@ int main(void)
 
     for (int i = 0; i < num0; i++)
     {
-        if (arr[i] % 2 == 0)
+        summ += arr[i];
+    }
+    aMean = summ / num0;
+    for (int i = 0; i < num0; i++)
+    {
+        if (arr[i] > aMean)
         {
             printf("%d ", arr[i]);
         }
     }
     for (int i = 0; i < num0; i++)
     {
-        if (arr[i] % 2)
+        if (arr[i] <= aMean)
         {
             printf("%d", arr[i]);
-            if (i < num0 - 1)
+            if (i != num0 - 1)
             {
                 printf(" ");
             }
         }
     }
+    printf("\n");
     return 0;
 }
