@@ -2,33 +2,35 @@
 
 int main(void)
 {
-    int num0 = 0, num1 = 0;
-    scanf("%d %d", &num0, &num1);
+    int num0 = 0, j = 0;
+    scanf("%d", &num0);
 
-    int arr[num0][num1];
-
-    for (int i = 0; i < num0; i++)
+    for (int i = 1; i <= num0; i++)
     {
-        for (int j = 0; j < num1; j++)
+        printf("%d ", i);
+        j = i;
+        if (j == 1)
         {
-            scanf("%d", &arr[i][j]);
-        }
-    }
-    for (int i = 0; i < num0; i++)
-    {
-        for (int j = 0; j < num1; j++)
-        {
-            printf("%d", arr[i][j]);
-            if (j != num1 - 1)
+            j += 1;
+            for (j; j <= num0; j++)
             {
-                printf(" ");
-            }
-            if (j == num1 - 1)
-            {
-                printf("\n");
+                printf("%d ", j);
             }
         }
+        else
+        {
+            j -= 1;
+            for (j; j > 1; j--)
+            {
+                printf("%d ", j);
+            }
+            for (j; j <= num0 - i; j++)
+            {
+                printf("%d ", j);
+            }
+            printf("%d ", j);
+        }
+        printf("\n");
     }
-    printf("\n");
     return 0;
 }
