@@ -2,35 +2,28 @@
 
 int main(void)
 {
-    int num0 = 0, j = 0;
-    scanf("%d", &num0);
+    int num0 = 0, num1 = 0;
+    long long summ = 0;
+    scanf("%d %d", &num0, &num1);
 
-    for (int i = 1; i <= num0; i++)
+    int arr[num0][num1];
+
+    for (int i = 0; i < num0; i++)
     {
-        printf("%d ", i);
-        j = i;
-        if (j == 1)
+        for (int j = 0; j < num1; j++)
         {
-            j += 1;
-            for (j; j <= num0; j++)
-            {
-                printf("%d ", j);
-            }
+            scanf("%d", &arr[i][j]);
         }
-        else
-        {
-            j -= 1;
-            for (j; j > 1; j--)
-            {
-                printf("%d ", j);
-            }
-            for (j; j <= num0 - i; j++)
-            {
-                printf("%d ", j);
-            }
-            printf("%d ", j);
-        }
-        printf("\n");
     }
+    for (int j = num1 - 1; j >= 0; j--)
+    {
+        summ = 0;
+        for (int i = 0; i < num0; i++)
+        {
+            summ += arr[i][j];
+        }
+        printf("%lld ", summ);
+    }
+    printf("\n");
     return 0;
 }
