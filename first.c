@@ -2,49 +2,56 @@
 
 int main(void)
 {
-    int num0 = 0, temp = 0, index = 0;
-    long long k = 0, offset = 0;
-    scanf("%d", &num0);
+    int num0 = 0, num1 = 0, count = 1, top = 0, left = 0;
+    scanf("%d %d", &num0, &num1);
 
-    int arr0[num0][num0];
-    int arr1[num0][num0];
+    int arr[num0][num1];
 
-    for (int i = 0; i < num0; i++)
+    int bottom = num0 - 1;
+    int right = num1 - 1;
+
+    while (top <= bottom && left <= right)
     {
-        for (int j = 0; j < num0; j++)
+        for (int i = left; i <= right; i++)
         {
-            scanf("%d", &arr0[i][j]);
+            arr[top][i] = count++;
         }
-    }
-    scanf("%lld", &k);
-    if (k > num0)
-    {
-        offset = k % num0;
-    }
-    else
-    {
-        offset = k;
-    }
-    for (int i = 0; i < num0; i++)
-    {
-        for (int j = 0; j < num0; j++)
+        top++;
+
+        for (int i = top; i <= bottom; i++)
         {
-            index = j + offset;
-            if (index > num0 - 1)
+            arr[i][right] = count++;
+        }
+        right--;
+
+        if (top <= bottom)
+        {
+            for (int i = right; i >= left; i--)
             {
-                index = index % num0;
+                arr[bottom][i] = count++;
             }
-            arr1[i][index] = arr0[i][j];
+            bottom--;
+        }
+
+        if (left <= right)
+        {
+            for (int i = bottom; i >= top; i--)
+            {
+                arr[i][left] = count++;
+            }
+            left++;
         }
     }
+
     for (int i = 0; i < num0; i++)
     {
-
-        for (int j = 0; j < num0; j++)
+        for (int j = 0; j < num1; j++)
         {
-            printf("%d ", arr1[i][j]);
+            printf("%3d ", arr[i][j]);
         }
         printf("\n");
     }
+
+    printf("\n");
     return 0;
 }
