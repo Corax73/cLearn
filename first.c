@@ -1,10 +1,18 @@
 #include <stdio.h>
-#include <ctype.h>
 
 int main(void)
 {
-    int num0 = 0;
-    scanf("%d", &num0);
-    printf("%c%c\n", num0 + 64, num0 + 96);
+    char str[30];
+    fgets(str, 30, stdin);
+    int i = 0, count = 0;
+    while (str[i])
+    {
+        if (str[i] != '\n' && str[i] != '\0')
+        {
+            count++;
+        }
+        i++;
+    }
+    printf("%d\n", count);
     return 0;
 }
