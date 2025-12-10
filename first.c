@@ -2,17 +2,24 @@
 
 int main(void)
 {
-    char str[30];
-    fgets(str, 30, stdin);
-    int i = 0, count = 0;
-    while (str[i])
+    int index = -1;
+    char ch;
+    char str[104];
+
+    scanf("%c ", &ch);
+    fgets(str, sizeof(str), stdin);
+    for (int i = 0; i < sizeof(str); i++)
     {
-        if (str[i] != '\n' && str[i] != '\0')
+        if ((str[i] == '\\' && str[i + 1] == 'n') || str[i] == '\n' || str[i] == '\0')
         {
-            count++;
+            break;
         }
-        i++;
+        if (str[i] == ch)
+        {
+            index = i;
+            break;
+        }
     }
-    printf("%d\n", count);
+    printf("%d\n", index);
     return 0;
 }
