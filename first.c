@@ -2,24 +2,29 @@
 
 int main(void)
 {
-    int index = -1;
-    char ch;
-    char str[104];
-
-    scanf("%c ", &ch);
-    fgets(str, sizeof(str), stdin);
-    for (int i = 0; i < sizeof(str); i++)
+    int num0 = 0, num1 = 0, x = 0, y = 0;
+    char str;
+    scanf("%d", &num0);
+    for (int i = 0; i < num0; i++)
     {
-        if ((str[i] == '\\' && str[i + 1] == 'n') || str[i] == '\n' || str[i] == '\0')
+        scanf("\n%c%*s %d", &str, &num1);
+        if (str == 'N')
         {
-            break;
+            y += num1;
         }
-        if (str[i] == ch)
+        else if (str == 'S')
         {
-            index = i;
-            break;
+            y -= num1;
+        }
+        else if (str == 'W')
+        {
+            x -= num1;
+        }
+        else if (str == 'E')
+        {
+            x += num1;
         }
     }
-    printf("%d\n", index);
+    printf("%d %d\n", x, y);
     return 0;
 }
