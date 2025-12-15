@@ -1,8 +1,9 @@
 #include <stdio.h>
+#include <ctype.h>
 
 int main(void)
 {
-    int size = 104, endIndex = 0;
+    int size = 54, startIndex = 0, offset = -1;
     char str[size];
 
     fgets(str, size, stdin);
@@ -10,20 +11,31 @@ int main(void)
     {
         if ((str[i] == '\\' && str[i + 1] == 'n') || str[i] == '\n' || str[i] == '\0')
         {
-            endIndex = i - 1;
             break;
         }
-    }
-    for (int i = 0; i < size; i++)
-    {
-        if ((str[i] == '\\' && str[i + 1] == 'n') || str[i] == '\n' || str[i] == '\0')
+        offset = -1;
+        if (str[i] == ' ')
         {
-            break;
+            startIndex = i + 1;
         }
-        printf("%c", str[i]);
-        if ((endIndex - i) % 3 == 0)
+        if (i == startIndex)
         {
-            printf(" ");
+            for (int j = startIndex; j < size; j++)
+            {
+                if (str[j] == ' ' || (str[j] == '\\' && str[j + 1] == 'n') || str[j] == '\n' || str[j] == '\0')
+                {
+                    break;
+                }
+                offset++;
+            }
+            if (str[startIndex] == str[startIndex + offset])
+            {
+                for (int k = startIndex; k <= startIndex + offset; k++)
+                {
+                    printf("%c", str[k]);
+                }
+                printf(" ");
+            }
         }
     }
     printf("\n");
