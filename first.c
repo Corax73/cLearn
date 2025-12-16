@@ -1,43 +1,21 @@
 #include <stdio.h>
+#include <string.h>
 #include <ctype.h>
 
 int main(void)
 {
-    int size = 54, startIndex = 0, offset = -1;
-    char str[size];
+    int size = 54;
+    char city0[size], city1[size], yes[] = "yes", no[] = "no";
+    scanf("%s", city0);
+    scanf("%s", city1);
 
-    fgets(str, size, stdin);
-    for (int i = 0; i < size; i++)
+    if (city0[strlen(city0) - 1] == tolower(city1[0]) || city1[strlen(city1) - 1] == tolower(city0[0]))
     {
-        if ((str[i] == '\\' && str[i + 1] == 'n') || str[i] == '\n' || str[i] == '\0')
-        {
-            break;
-        }
-        offset = -1;
-        if (str[i] == ' ')
-        {
-            startIndex = i + 1;
-        }
-        if (i == startIndex)
-        {
-            for (int j = startIndex; j < size; j++)
-            {
-                if (str[j] == ' ' || (str[j] == '\\' && str[j + 1] == 'n') || str[j] == '\n' || str[j] == '\0')
-                {
-                    break;
-                }
-                offset++;
-            }
-            if (str[startIndex] == str[startIndex + offset])
-            {
-                for (int k = startIndex; k <= startIndex + offset; k++)
-                {
-                    printf("%c", str[k]);
-                }
-                printf(" ");
-            }
-        }
+        printf("%s\n", yes);
     }
-    printf("\n");
+    else
+    {
+        printf("%s\n", no);
+    }
     return 0;
 }
