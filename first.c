@@ -1,21 +1,23 @@
 #include <stdio.h>
 
-void square(int x, char c)
+int is_prime(int n)
 {
-    for (int i = 0; i < x; i++)
+    if (n == 0 || n == 1 || n == 2)
     {
-        for (int j = 0; j < x; j++)
+        return 1;
+    }
+    for (int i = 2; i < n; i++)
+    {
+        if (n % i == 0)
         {
-            printf("%c", c);
+            return 0;
         }
-        printf("\n");
     }
 }
 int main()
 {
     int num0 = 0;
-    char ch;
-    scanf("%d %c", &num0, &ch);
-    square(num0, ch);
+    scanf("%d", &num0);
+    printf("%d\n", is_prime(num0));
     return 0;
 }
