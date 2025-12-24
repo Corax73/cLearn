@@ -1,23 +1,29 @@
 #include <stdio.h>
 
-int is_prime(int n)
+void sum_digits(int *x)
 {
-    if (n == 0 || n == 1 || n == 2)
+    int num1 = 0, num2 = 10, summ = 0;
+    num1 = *x % num2;
+    summ += num1;
+    num2 *= 10;
+    if (num1 != *x)
     {
-        return 1;
-    }
-    for (int i = 2; i < n; i++)
-    {
-        if (n % i == 0)
+        while (num1 != *x)
         {
-            return 0;
+            num1 = *x % num2;
+            summ += num1 / (num2 / 10);
+            num2 *= 10;
         }
+        *x = summ;
     }
 }
-int main()
+
+int main(void)
 {
     int num0 = 0;
     scanf("%d", &num0);
-    printf("%d\n", is_prime(num0));
+    int *x = &num0;
+    sum_digits(x);
+    printf("summ=%d\n", *x);
     return 0;
 }
