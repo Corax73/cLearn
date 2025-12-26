@@ -1,29 +1,20 @@
 #include <stdio.h>
 
-void sum_digits(int *x)
+int gcd(int x, int y)
 {
-    int num1 = 0, num2 = 10, summ = 0;
-    num1 = *x % num2;
-    summ += num1;
-    num2 *= 10;
-    if (num1 != *x)
+    while (y != 0)
     {
-        while (num1 != *x)
-        {
-            num1 = *x % num2;
-            summ += num1 / (num2 / 10);
-            num2 *= 10;
-        }
-        *x = summ;
+        int temp = y;
+        y = x % y;
+        x = temp;
     }
+    return x;
 }
 
 int main(void)
 {
-    int num0 = 0;
-    scanf("%d", &num0);
-    int *x = &num0;
-    sum_digits(x);
-    printf("summ=%d\n", *x);
+    int num0 = 0, num1 = 0;
+    scanf("%d %d", &num0, &num1);
+    printf("%d\n", gcd(num0, num1));
     return 0;
 }
