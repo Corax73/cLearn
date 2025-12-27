@@ -1,20 +1,60 @@
 #include <stdio.h>
 
-int gcd(int x, int y)
+void sort_arr(int arr[], int n, int fl)
 {
-    while (y != 0)
+    int index = 0;
+    for (int i = 0; i < n; i++)
     {
-        int temp = y;
-        y = x % y;
-        x = temp;
+        index = i;
+        for (int j = i + 1; j < n; j++)
+        {
+            if (fl)
+            {
+                if (arr[j] > arr[index])
+                {
+                    index = j;
+                }
+            }
+            else
+            {
+                if (arr[j] < arr[index])
+                {
+                    index = j;
+                }
+            }
+        }
+        if (index != i)
+        {
+            int temp = arr[i];
+            arr[i] = arr[index];
+            arr[index] = temp;
+        }
     }
-    return x;
 }
 
 int main(void)
 {
     int num0 = 0, num1 = 0;
-    scanf("%d %d", &num0, &num1);
-    printf("%d\n", gcd(num0, num1));
+    scanf("%d", &num0);
+    int arr[num0];
+
+    for (int i = 0; i < num0; i++)
+    {
+        scanf("%d", &arr[i]);
+    }
+    scanf("%d", &num1);
+    sort_arr(arr, num0, num1);
+    for (int i = 0; i < num0; i++)
+    {
+        printf("%d", arr[i]);
+        if (i != num0 - 1)
+        {
+            printf(" ");
+        }
+        if (i == num0 - 1)
+        {
+            printf("\n");
+        }
+    }
     return 0;
 }
