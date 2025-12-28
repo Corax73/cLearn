@@ -1,35 +1,37 @@
 #include <stdio.h>
 
-void sort_arr(int arr[], int n, int fl)
+int binary_search(int arr[], int n, int arg)
 {
-    int index = 0;
-    for (int i = 0; i < n; i++)
+    int l_wall = 0, r_wall = n - 1, res = -1;
+
+    while (l_wall < r_wall)
     {
-        index = i;
-        for (int j = i + 1; j < n; j++)
+        int mid = (r_wall + l_wall) / 2;
+        if (arg == arr[mid])
         {
-            if (fl)
-            {
-                if (arr[j] > arr[index])
-                {
-                    index = j;
-                }
-            }
-            else
-            {
-                if (arr[j] < arr[index])
-                {
-                    index = j;
-                }
-            }
+            res = mid;
+            break;
         }
-        if (index != i)
+        else if (arg == arr[l_wall])
         {
-            int temp = arr[i];
-            arr[i] = arr[index];
-            arr[index] = temp;
+            res = l_wall;
+            break;
+        }
+        else if (arg == arr[r_wall])
+        {
+            res = r_wall;
+            break;
+        }
+        else if (arg < arr[mid])
+        {
+            r_wall = mid - 1;
+        }
+        else
+        {
+            l_wall = mid + 1;
         }
     }
+    return res;
 }
 
 int main(void)
@@ -43,18 +45,7 @@ int main(void)
         scanf("%d", &arr[i]);
     }
     scanf("%d", &num1);
-    sort_arr(arr, num0, num1);
-    for (int i = 0; i < num0; i++)
-    {
-        printf("%d", arr[i]);
-        if (i != num0 - 1)
-        {
-            printf(" ");
-        }
-        if (i == num0 - 1)
-        {
-            printf("\n");
-        }
-    }
+    num1 = binary_search(arr, num0, num1);
+    printf("%d\n", num1);
     return 0;
 }
