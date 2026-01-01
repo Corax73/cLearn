@@ -1,51 +1,50 @@
-#include <stdio.h>
+#include <ncurses.h>
 
-int binary_search(int arr[], int n, int arg)
+int main()
 {
-    int l_wall = 0, r_wall = n - 1, res = -1;
+    int x = 0, y = 0, max_y = 0, max_x = 0;
+    int ch;
 
-    while (l_wall < r_wall)
+    initscr();
+    raw();
+    keypad(stdscr, TRUE);
+    noecho();
+    curs_set(0);
+
+    getmaxyx(stdscr, max_y, max_x);
+    y = max_y / 2;
+    x = max_x / 2;
+
+    while ((ch = getch()) != 'q')
     {
-        int mid = (r_wall + l_wall) / 2;
-        if (arg == arr[mid])
-        {
-            res = mid;
-            break;
-        }
-        else if (arg == arr[l_wall])
-        {
-            res = l_wall;
-            break;
-        }
-        else if (arg == arr[r_wall])
-        {
-            res = r_wall;
-            break;
-        }
-        else if (arg < arr[mid])
-        {
-            r_wall = mid - 1;
-        }
-        else
-        {
-            l_wall = mid + 1;
-        }
-    }
-    return res;
-}
+        clear();
 
-int main(void)
-{
-    int num0 = 0, num1 = 0;
-    scanf("%d", &num0);
-    int arr[num0];
+        switch (ch)
+        {
+        case KEY_UP:
+            if (y > 0)
+                y--;
+            break;
+        case KEY_DOWN:
+            if (y < max_y - 1)
+                y++;
+            break;
+        case KEY_LEFT:
+            if (x > 0)
+                x--;
+            break;
+        case KEY_RIGHT:
+            if (x < max_x - 1)
+                x++;
+            break;
+        }
 
-    for (int i = 0; i < num0; i++)
-    {
-        scanf("%d", &arr[i]);
+        mvprintw(y, x, "@");
+
+        refresh();
     }
-    scanf("%d", &num1);
-    num1 = binary_search(arr, num0, num1);
-    printf("%d\n", num1);
+
+    endwin();
+
     return 0;
 }
