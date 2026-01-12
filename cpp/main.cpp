@@ -5,23 +5,26 @@ using namespace std;
 
 int main()
 {
-    int num0 = 0, check = 0;
-    string err = "Ошибка", numErr = "Цифры числа различаются", win = "Вы выиграли!";
-    cin >> num0;
+    int x = 0, y = 0;
+    string err0 = "Неверная строка", err1 = "Неверный столбец";
+    string arr[3][3] = {
+        {"Superman", "Batman", "Spiderman"},
+        {"Ironman", "Wolverine", "Aquaman"},
+        {"Thor", "Hulk", "Flash"},
+    };
 
-    if (num0 < 10 || num0 > 99)
+    cin >> x >> y;
+
+    if (x > 3 || x == 0)
     {
-        cout << err << endl;
+        cout << err0 << endl;
+    }
+    else if (y > 3 || y == 0)
+    {
+        cout << err1 << endl;
     }
     else
     {
-        if (num0 / 10 != num0 % 10)
-        {
-            cout << numErr << endl;
-        }
-        else
-        {
-            cout << win << endl;
-        }
+        cout << arr[x - 1][y - 1] << endl;
     }
 }
