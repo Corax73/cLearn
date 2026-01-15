@@ -1,21 +1,25 @@
 #include <iostream>
+#include <string>
+
 using namespace std;
 
-int main() {
-    int x = 0, isSimple = 1;
-    cin >> x;
-    if (x > 1)
+int main()
+{
+    int x = 0, count = 0;
+
+    do
     {
-        for (int i = 2; i < x; i++)
+        cin >> x;
+        cout << x;
+        if (x != 0)
         {
-            if (x % i == 0)
-            {
-                isSimple = 0;
-                break;
-            }
+            cout << ' ';
         }
-    } else {
-        isSimple = 0;
-    }
-    cout << (isSimple ? "yes" : "no") << endl;
+        else
+        {
+            cout << endl;
+        }
+        count++;
+    } while (x != 0);
+    cout << "Количество чисел: " << count << endl;
 }
