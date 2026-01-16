@@ -1,25 +1,23 @@
 #include <iostream>
-#include <string>
 
 using namespace std;
 
 int main()
 {
-    int x = 0, count = 0;
+    int num0 = 0, remainder = 0, divider = 10;
 
-    do
+    cin >> num0;
+    if (num0 == 0)
     {
-        cin >> x;
-        cout << x;
-        if (x != 0)
+        cout << num0 << endl;
+    }
+    else
+    {
+        do
         {
-            cout << ' ';
-        }
-        else
-        {
-            cout << endl;
-        }
-        count++;
-    } while (x != 0);
-    cout << "Количество чисел: " << count << endl;
+            remainder = num0 % divider;
+            num0 /= divider;
+            cout << remainder;
+        } while (num0 > 0);
+    }
 }
