@@ -1,23 +1,19 @@
 #include <iostream>
+#include <string>
 
 using namespace std;
 
 int main()
 {
-    int num0 = 0, remainder = 0, divider = 10;
+    int length = 0;
+    string input, stop = "Stop";
 
-    cin >> num0;
-    if (num0 == 0)
+    do
     {
-        cout << num0 << endl;
-    }
-    else
-    {
-        do
+        cin >> input;
+        if (input != stop)
         {
-            remainder = num0 % divider;
-            num0 /= divider;
-            cout << remainder;
-        } while (num0 > 0);
-    }
+            cout << input.size() << endl;
+        }
+    } while (input != stop);
 }
