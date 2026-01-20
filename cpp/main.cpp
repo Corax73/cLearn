@@ -1,19 +1,23 @@
 #include <iostream>
-#include <string>
-
 using namespace std;
 
 int main()
 {
-    int length = 0;
-    string input, stop = "Stop";
-
-    do
+    int n;
+    cin >> n;
+    for (int i = 0; i < n; i++)
     {
-        cin >> input;
-        if (input != stop)
+        for (int j = 0; j < n; j++)
         {
-            cout << input.size() << endl;
+            if ((i + j) % 2 == 0)
+            {
+                cout << "x";
+            }
+            else
+            {
+                cout << "o";
+            }
         }
-    } while (input != stop);
+        cout << endl;
+    }
 }
