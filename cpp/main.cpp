@@ -3,24 +3,30 @@ using namespace std;
 
 int main()
 {
-    int num0 = 0;
+    int num0 = 0, num1 = 0;
 
-    cin >> num0;
+    cin >> num0 >> num1;
 
-    double a[num0], max = 0;
+    int arr[num0][num1];
 
     for (int i = 0; i < num0; i++)
     {
-        cin >> a[i];
-    }
-
-    max = a[0];
-    for (int i = 0; i < num0; i++)
-    {
-        if (a[i] > max)
+        for (int j = 0; j < num1; j++)
         {
-            max = a[i];
+            cin >> arr[i][j];
         }
     }
-    cout << max << endl;
+
+    for (int i = 0; i < num0; i++)
+    {
+        for (int j = 0; j < num1; j++)
+        {
+            cout << arr[i][j];
+            if (j < num1 - 1)
+            {
+                cout << ' ';
+            }
+        }
+        cout << endl;
+    }
 }
