@@ -1,23 +1,44 @@
 #include <iostream>
 #include <string>
-#include <map>
 
 using namespace std;
 
-int main() {
-    string input = "", err = "Ошибка перевода";
-    map<string, string> dict;
-    dict["Hello"] = "Привет";
-    dict["Bye"] = "Пока";
-    dict["How are you"] = "Как дела";
-    dict["I love you"] = "Я люблю тебя";
-    dict["Good"] = "Хорошо";
+string revertString(string str)
+{
+    string resp = "";
+    for (int i = str.size() - 1; i >= 0; i--)
+    {
+        resp += str[i];
+    }
+    return resp;
+}
 
-    getline(cin, input);
+bool isPalindrome(string *ptr1, string *ptr2)
+{
+    return *ptr1 == *ptr2;
+}
 
-    if (dict.contains(input)) {
-        cout << dict[input] << endl;
-    } else {
-        cout << err << endl;
+int main()
+{
+    string input = "", revertedStr = "", yes = "yes", no = "no";
+
+    cin >> input;
+
+    if (input.size() > 1)
+    {
+        revertedStr = revertString(input);
+
+        if (isPalindrome(&input, &revertedStr))
+        {
+            cout << yes << endl;
+        }
+        else
+        {
+            cout << no << endl;
+        }
+    }
+    else
+    {
+        cout << yes << endl;
     }
 }
