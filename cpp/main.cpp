@@ -1,7 +1,17 @@
 #include <iostream>
 #include <string>
+#include <cctype>
 
 using namespace std;
+
+string tolowerString(string str)
+{
+    for (int i = str.size() - 1; i >= 0; i--)
+    {
+        str[i] = tolower(str[i]);
+    }
+    return str;
+}
 
 string revertString(string str)
 {
@@ -22,11 +32,13 @@ int main()
 {
     string input = "", revertedStr = "", yes = "yes", no = "no";
 
-    cin >> input;
+    getline(cin, input);
 
     if (input.size() > 1)
     {
         revertedStr = revertString(input);
+        input = tolowerString(input);
+        revertedStr = tolowerString(revertedStr);
 
         if (isPalindrome(&input, &revertedStr))
         {
