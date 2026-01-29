@@ -1,21 +1,19 @@
 #include <iostream>
-#include <string>
-#include <cctype>
-
 using namespace std;
 
 int main()
 {
-    int count = 0;
-    string input = "";
+    int num0 = 0;
+    cin >> num0;
+    int minDivider = num0;
 
-    getline(cin, input);
-    for (int i = 0; i < input.size(); i++)
+    for (int i = 2; i * i <= num0; ++i)
     {
-        if (isalpha(input[i]) && (i == input.size() - 1 || isspace(input[i + 1])))
+        if (num0 % i == 0)
         {
-            count++;
+            minDivider = i;
+            break;
         }
     }
-    cout << count << endl;
+    cout << minDivider << endl;
 }
