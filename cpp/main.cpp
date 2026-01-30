@@ -3,17 +3,30 @@ using namespace std;
 
 int main()
 {
-    int num0 = 0;
+    int num0 = 0, isSimple = 1;
     cin >> num0;
-    int minDivider = num0;
 
-    for (int i = 2; i * i <= num0; ++i)
+    if (num0 > 1)
     {
-        if (num0 % i == 0)
+        for (int i = 2; i < num0; i++)
         {
-            minDivider = i;
-            break;
+            if (num0 % i == 0)
+            {
+                isSimple = 0;
+                break;
+            }
         }
     }
-    cout << minDivider << endl;
+    else
+    {
+        isSimple = 0;
+    }
+    if (isSimple)
+    {
+        cout << "yes" << endl;
+    }
+    else
+    {
+        cout << "no" << endl;
+    }
 }
