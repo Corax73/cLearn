@@ -1,32 +1,70 @@
 #include <iostream>
 using namespace std;
 
-int main()
+void diamond(int size)
 {
-    int num0 = 0, isSimple = 1;
-    cin >> num0;
-
-    if (num0 > 1)
+    int width = (size * 2) - 1;
+    int middle = width / 2;
+    int left = middle, right = middle;
+    for (int i = 0; i < width; i++)
     {
-        for (int i = 2; i < num0; i++)
+        if (i <= middle)
         {
-            if (num0 % i == 0)
+            for (int j = 0; j < left; j++)
             {
-                isSimple = 0;
-                break;
+                cout << ' ';
+            }
+            for (int j = left; j < right + 1; j++)
+            {
+                cout << '*';
+            }
+            for (int j = right + 1; j < width; j++)
+            {
+                cout << ' ';
+            }
+            cout << endl;
+            if (i != middle)
+            {
+                if (left > 0)
+                {
+                    left--;
+                }
+                if (right < width)
+                {
+                    right++;
+                }
             }
         }
+        else
+        {
+            if (left < width)
+            {
+                left++;
+            }
+            if (right > 0)
+            {
+                right--;
+            }
+            for (int j = left; j > 0; j--)
+            {
+                cout << ' ';
+            }
+            for (int j = left; j < right + 1; j++)
+            {
+                cout << '*';
+            }
+            for (int j = right + 1; j < width; j++)
+            {
+                cout << ' ';
+            }
+            cout << endl;
+        }
     }
-    else
-    {
-        isSimple = 0;
-    }
-    if (isSimple)
-    {
-        cout << "yes" << endl;
-    }
-    else
-    {
-        cout << "no" << endl;
-    }
+}
+
+int main()
+{
+    int n;
+    cin >> n;
+    diamond(n);
 }
